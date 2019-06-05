@@ -27,6 +27,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <glib/gi18n.h>
+#define HANDY_USE_UNSTABLE_API
+#include <handy.h>
 
 #ifdef HAVE_CHEESE
 #include <cheese-gtk.h>
@@ -258,6 +260,7 @@ main (int argc, char *argv[])
 #endif
 
   gtk_init (&argc, &argv);
+  hdy_init (&argc, &argv);
 
   g_message ("Starting gnome-initial-setup");
   if (gis_get_mock_mode ())
