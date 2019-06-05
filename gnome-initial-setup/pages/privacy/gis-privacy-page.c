@@ -213,6 +213,7 @@ activate_link (GtkLabel       *label,
                                         | GTK_DIALOG_DESTROY_WITH_PARENT
                                         | GTK_DIALOG_USE_HEADER_BAR,
                                         NULL, NULL);
+  gtk_window_set_default_size (GTK_WINDOW (dialog), 600, 500);
 
   overlay = gtk_overlay_new ();
   gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), overlay);
@@ -224,7 +225,7 @@ activate_link (GtkLabel       *label,
   gtk_overlay_add_overlay (GTK_OVERLAY (overlay), progress_bar);
 
   view = webkit_web_view_new ();
-  gtk_widget_set_size_request (view, 600, 500);
+  gtk_widget_set_size_request (view, 350, 200);
   gtk_widget_set_hexpand (view, TRUE);
   gtk_widget_set_vexpand (view, TRUE);
   g_signal_connect (view, "notify::estimated-load-progress",
