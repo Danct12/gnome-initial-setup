@@ -41,6 +41,7 @@ dependencies = [
     dependency ('gdm', version: '>= 3.8.3'),
     dependency ('geocode-glib-1.0'),
     dependency ('libgeoclue-2.0', version: '>= 2.3.1'),
+    dependency('libhandy-0.0', version: '>= 0.0.10'),
     cc.find_library('m', required: false),
     dependency ('pango', version: '>= 1.32.5'),
     dependency ('rest-0.7'),
