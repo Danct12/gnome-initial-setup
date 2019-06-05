@@ -2,10 +2,13 @@
 <interface>
   <template class="GisKeyboardPage" parent="GisPage">
     <child>
+      <object class="HdyColumn">
+        <property name="linear_growth_width">400</property>
+        <property name="maximum_width">600</property>
+        <property name="visible">True</property>
+    <child>
       <object class="GtkBox" id="page">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
-	<property name="halign">center</property>
         <property name="orientation">vertical</property>
         <property name="spacing">18</property>
         <child>
@@ -20,9 +23,10 @@
         <child>
           <object class="CcInputChooser" id="input_chooser">
             <property name="visible">True</property>
-            <property name="halign">center</property>
           </object>
         </child>
+      </object>
+    </child>
       </object>
     </child>
   </template>

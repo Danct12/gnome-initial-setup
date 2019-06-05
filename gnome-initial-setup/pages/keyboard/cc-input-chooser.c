@@ -232,13 +232,11 @@ input_widget_new (CcInputChooser *chooser,
         gtk_label_set_yalign (GTK_LABEL (widget->label), 0.5);
         gtk_label_set_ellipsize (GTK_LABEL (widget->label), PANGO_ELLIPSIZE_END);
         gtk_label_set_max_width_chars (GTK_LABEL (widget->label), 40);
-	gtk_label_set_width_chars (GTK_LABEL (widget->label), 40);
-	gtk_box_pack_start (GTK_BOX (widget->box), widget->label, FALSE, FALSE, 0);
+	gtk_box_pack_start (GTK_BOX (widget->box), widget->label, TRUE, TRUE, 0);
 	widget->checkmark = gtk_image_new_from_icon_name ("object-select-symbolic", GTK_ICON_SIZE_MENU);
-	gtk_box_pack_start (GTK_BOX (widget->box), widget->checkmark, TRUE, TRUE, 0);
+	gtk_box_pack_start (GTK_BOX (widget->box), widget->checkmark, FALSE, TRUE, 0);
 	gtk_widget_set_margin_start (widget->checkmark, 10);
 	gtk_widget_set_margin_end (widget->checkmark, 10);
-	gtk_widget_set_halign (widget->box, GTK_ALIGN_START);
 
 	text = g_strdup_printf ("<a href='preview'>%s</a>", _("Preview"));
 	label = gtk_label_new ("");
@@ -246,7 +244,7 @@ input_widget_new (CcInputChooser *chooser,
 	g_free (text);
 	g_signal_connect (label, "activate-link",
 			  G_CALLBACK (preview_cb), chooser);
-	gtk_box_pack_start (GTK_BOX (widget->box), label, TRUE, TRUE, 0);
+	gtk_box_pack_start (GTK_BOX (widget->box), label, FALSE, TRUE, 0);
 
 	gtk_widget_show_all (widget->box);
 
