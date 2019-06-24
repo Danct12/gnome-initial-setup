@@ -3,10 +3,13 @@
   <!-- interface-requires gtk+ 3.0 -->
   <template class="GisAccountPage" parent="GisPage">
     <child>
+      <object class="HdyColumn">
+        <property name="linear_growth_width">400</property>
+        <property name="maximum_width">600</property>
+        <property name="visible">True</property>
+    <child>
       <object class="GtkBox" id="page">
         <property name="visible">True</property>
-        <property name="halign">center</property>
-        <property name="valign">fill</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkStack" id="stack">
@@ -57,6 +60,8 @@
             </child>
           </object>
         </child>
+      </object>
+    </child>
       </object>
     </child>
   </template>
