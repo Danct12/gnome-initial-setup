@@ -4,11 +4,13 @@
   <!-- interface-requires gtk+ 3.0 -->
   <template class="GisGoaPage" parent="GisPage">
     <child>
+      <object class="HdyColumn">
+        <property name="linear_growth_width">400</property>
+        <property name="maximum_width">600</property>
+        <property name="visible">True</property>
+    <child>
       <object class="GtkBox" id="box">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="halign">center</property>
-        <property name="valign">fill</property>
         <property name="orientation">vertical</property>
         <property name="spacing">18</property>
         <child>
@@ -58,6 +60,8 @@
             <property name="position">4</property>
           </packing>
         </child>
+      </object>
+    </child>
       </object>
     </child>
   </template>

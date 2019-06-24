@@ -153,6 +153,7 @@ add_provider_to_list (GisGoaPage *page, const char *provider_type)
   checkmark = gtk_image_new_from_icon_name ("object-select-symbolic", GTK_ICON_SIZE_MENU);
 
   account_label = gtk_label_new (NULL);
+  gtk_label_set_ellipsize (GTK_LABEL (account_label), PANGO_ELLIPSIZE_MIDDLE);
 
   gtk_box_pack_start (GTK_BOX (box), image, FALSE, FALSE, 0);
   gtk_box_pack_start (GTK_BOX (box), label, FALSE, FALSE, 0);
