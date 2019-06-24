@@ -31,11 +31,14 @@
 
 #include <locale.h>
 #include <gtk/gtk.h>
+#define HANDY_USE_UNSTABLE_API
+#include <handy.h>
 
 #include "gis-page-header.h"
 
 struct _GisPrivacyPagePrivate
 {
+  GtkWidget *list;
   GtkWidget *location_switch;
   GtkWidget *reporting_row;
   GtkWidget *reporting_switch;
@@ -96,8 +99,7 @@ abrt_appeared_cb (GDBusConnection *connection,
   GisPrivacyPagePrivate *priv = gis_privacy_page_get_instance_private (page);
 
   gtk_widget_show (priv->reporting_row);
-  gtk_widget_show (priv->reporting_label);
-  gtk_widget_show (priv->distro_privacy_policy_label);
+  gtk_list_box_invalidate_headers (GTK_LIST_BOX (priv->list));
 }
 
 static void
@@ -108,9 +110,8 @@ abrt_vanished_cb (GDBusConnection *connection,
   GisPrivacyPage *page = user_data;
   GisPrivacyPagePrivate *priv = gis_privacy_page_get_instance_private (page);
 
-  gtk_widget_hide (priv->reporting_row);
-  gtk_widget_hide (priv->reporting_label);
-  gtk_widget_hide (priv->distro_privacy_policy_label);
+  /* gtk_widget_hide (priv->reporting_row); */
+  gtk_list_box_invalidate_headers (GTK_LIST_BOX (priv->list));
 }
 
 static void
@@ -143,6 +144,8 @@ gis_privacy_page_constructed (GObject *object)
                                           abrt_vanished_cb,
                                           page,
                                           NULL);
+
+  gtk_list_box_set_header_func (GTK_LIST_BOX (priv->list), hdy_list_box_separator_header, NULL, NULL);
 }
 
 static void
@@ -254,6 +257,7 @@ gis_privacy_page_class_init (GisPrivacyPageClass *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   gtk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (klass), "/org/gnome/initial-setup/gis-privacy-page.ui");
+  gtk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (klass), GisPrivacyPage, list);
   gtk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (klass), GisPrivacyPage, location_switch);
   gtk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (klass), GisPrivacyPage, reporting_row);
   gtk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (klass), GisPrivacyPage, reporting_switch);
