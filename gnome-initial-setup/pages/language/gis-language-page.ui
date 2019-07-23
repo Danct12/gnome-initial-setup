@@ -12,7 +12,6 @@
             <property name="visible">True</property>
             <property name="orientation">vertical</property>
             <property name="halign">center</property>
-            <property name="valign">center</property>
             <property name="spacing">18</property>
             <property name="expand" bind-source="language_chooser" bind-property="visible" bind-flags="invert-boolean|sync-create"/>
             <child>
@@ -37,7 +36,6 @@
             <property name="margin_bottom">18</property>
             <property name="width_request">400</property>
             <property name="visible">True</property>
-            <property name="valign">start</property>
           </object>
         </child>
       </object>
