@@ -28,6 +28,9 @@
 
 #include <gtk/gtk.h>
 
+#define HANDY_USE_UNSTABLE_API
+#include <handy.h>
+
 #define GNOME_DESKTOP_USE_UNSTABLE_API
 #include <libgnome-desktop/gnome-languages.h>
 #include <libgnome-desktop/gnome-xkb-info.h>
@@ -576,23 +579,6 @@ row_activated (GtkListBox        *box,
         }
 }
 
-static void
-update_header_func (GtkListBoxRow *child,
-                    GtkListBoxRow *before,
-                    gpointer       user_data)
-{
-        GtkWidget *header;
-
-        if (before == NULL) {
-                gtk_list_box_row_set_header (child, NULL);
-                return;
-        }
-
-        header = gtk_separator_new (GTK_ORIENTATION_HORIZONTAL);
-        gtk_list_box_row_set_header (child, header);
-        gtk_widget_show (header);
-}
-
 #ifdef HAVE_IBUS
 static void
 update_ibus_active_sources (CcInputChooser *chooser)
@@ -750,7 +736,7 @@ cc_input_chooser_constructed (GObject *object)
         gtk_list_box_set_filter_func (GTK_LIST_BOX (priv->input_list),
                                       input_visible, chooser, NULL);
         gtk_list_box_set_header_func (GTK_LIST_BOX (priv->input_list),
-                                      update_header_func, chooser, NULL);
+                                      hdy_list_box_separator_header, NULL, NULL);
         gtk_list_box_set_selection_mode (GTK_LIST_BOX (priv->input_list),
                                          GTK_SELECTION_NONE);
 
