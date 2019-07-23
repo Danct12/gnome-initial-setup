@@ -511,11 +511,6 @@ show_more (CcInputChooser *chooser)
         gtk_widget_show (priv->filter_entry);
         gtk_widget_grab_focus (priv->filter_entry);
 
-	gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (priv->scrolled_window),
-					GTK_POLICY_NEVER,
-					GTK_POLICY_AUTOMATIC);
-	gtk_widget_set_valign (GTK_WIDGET (chooser), GTK_ALIGN_FILL);
-
         priv->showing_extra = TRUE;
         gtk_list_box_invalidate_filter (GTK_LIST_BOX (priv->input_list));
         g_object_notify_by_pspec (G_OBJECT (chooser), obj_props[PROP_SHOWING_EXTRA]);
