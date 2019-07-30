@@ -35,7 +35,6 @@
             <property name="visible">True</property>
             <property name="halign">center</property>
             <property name="valign">end</property>
-            <property name="margin_bottom">18</property>
             <child>
               <object class="GtkToggleButton" id="page_toggle">
                 <property name="visible">True</property>
