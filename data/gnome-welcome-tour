@@ -1,3 +1,5 @@
 #! /bin/sh
 
+cfgdir=${XDG_CONFIG_DIR:-$HOME/.config}
+
 rm -f $cfgdir/run-welcome-tour
