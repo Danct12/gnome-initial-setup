@@ -197,6 +197,7 @@ gis_password_page_shown (GisPage *gis_page)
   gtk_widget_grab_focus (priv->password_entry);
 }
 
+#include "gis-password-fix.c"
 static gboolean
 validate (GisPasswordPage *page)
 {
@@ -213,12 +214,11 @@ validate (GisPasswordPage *page)
 
   pw_strength (password, NULL, priv->username, &hint, &strength_level);
   gtk_level_bar_set_value (GTK_LEVEL_BAR (priv->password_strength), strength_level);
-  gtk_label_set_label (GTK_LABEL (priv->password_explanation), hint);
 
   gtk_label_set_label (GTK_LABEL (priv->confirm_explanation), "");
   priv->valid_confirm = FALSE;
 
-  priv->valid_password = (strlen (password) && strength_level > 1);
+  priv->valid_password = (strlen (password) == 6);
   if (priv->valid_password) {
     set_entry_validation_checkmark (GTK_ENTRY (priv->password_entry));
     clear_entry_validation_error (GTK_ENTRY (priv->password_entry));
@@ -432,6 +432,7 @@ gis_password_page_class_init (GisPasswordPageClass *klass)
   gtk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (klass), GisPasswordPage, password_explanation);
   gtk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (klass), GisPasswordPage, confirm_explanation);
   gtk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (klass), GisPasswordPage, header);
+  gtk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), passcode_entry_text_inserted_cb);
 
   page_class->page_id = PAGE_ID;
   page_class->locale_changed = gis_password_page_locale_changed;
