@@ -54,7 +54,7 @@
               <object class="GtkFrame" id="map_frame">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="hexpand">True</property>
+                <property name="halign">center</property>
                 <property name="label_xalign">0</property>
                 <!-- Add the borders back to the map inside its scrolled window, so it can visually reach the window's border in case the window is too narrow. -->
                 <property name="margin_start">12</property>
