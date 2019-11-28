@@ -100,6 +100,10 @@ gchar *
 cc_common_language_get_current_language (void)
 {
         g_assert (current_language != NULL);
+
+        if (g_strcmp0 (current_language, "C"))
+                return g_strdup ("en_US.UTF-8");
+
         return g_strdup (current_language);
 }
 
