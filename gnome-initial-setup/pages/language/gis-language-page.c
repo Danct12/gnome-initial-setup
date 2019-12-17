@@ -126,7 +126,7 @@ language_changed (CcLanguageChooser  *chooser,
   gis_driver_set_user_language (driver, priv->new_locale_id, TRUE);
   gtk_widget_set_default_direction (gtk_get_locale_direction ());
 
-  if (gis_driver_get_mode (driver) == GIS_DRIVER_MODE_NEW_USER) {
+  /* if (gis_driver_get_mode (driver) == GIS_DRIVER_MODE_NEW_USER) */ {
       if (g_permission_get_allowed (priv->permission)) {
           set_localed_locale (page);
       }
@@ -235,7 +235,7 @@ gis_language_page_constructed (GObject *object)
                     G_CALLBACK (language_confirmed), page);
 
   /* If we're in new user mode then we're manipulating system settings */
-  if (gis_driver_get_mode (GIS_PAGE (page)->driver) == GIS_DRIVER_MODE_NEW_USER)
+  /* if (gis_driver_get_mode (GIS_PAGE (page)->driver) == GIS_DRIVER_MODE_NEW_USER) */
     {
       priv->permission = polkit_permission_new_sync ("org.freedesktop.locale1.set-locale", NULL, NULL, NULL);
 
